@@ -8,7 +8,12 @@
         $sql = mysqli_query($db,$l);
         if(mysqli_num_rows($sql) > 0){
             $_SESSION['login-success'] = '1';
-            $_SESSION['arr'] = array($sql);
+
+            $y = mysqli_fetch_assoc($sql);
+            $_SESSION['arr'] = [
+                "name"  => $y['name'],
+                "email" => $email 
+            ];
 
             header("location: ../../view/index.php");
         }else{
